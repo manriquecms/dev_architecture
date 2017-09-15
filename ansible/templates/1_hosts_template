@@ -1,0 +1,18 @@
+
+[all:children]
+masters
+agents
+
+[all:vars]
+consul_datacenter="test"
+consul_bootstrap="true"
+consul_use_systemd="true"
+consul_use_upstart="false"
+consul_use_initd="false"
+consul_bind_address="{{ hostvars[inventory_hostname].ansible_host }}"
+consul_join_at_start=true
+consul_retry_join=true
+consul_retry_interval=30s
+consul_retry_max=10
+consul_servers=["{{ hostvars['master-1'].ansible_host }}"]
+

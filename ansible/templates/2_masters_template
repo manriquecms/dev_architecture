@@ -1,0 +1,3 @@
+
+[masters:vars]
+consul_is_server="true"
