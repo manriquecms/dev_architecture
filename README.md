@@ -18,16 +18,16 @@
 ```
 - Generate the docker image with as bootstrap:
 ```shell
-  make build
+ $> make build
 ```
 - Run the bootstrap image
 ```shell
-  make run-bootstrap
+ $> make run-bootstrap
 ```
 # Inside the container:
 ```shell
-  cd /dev-arch/ansible
-  bash execute-playbook.sh playbooks/install-dev-architecture.yml
+ $> cd /dev-arch/ansible
+ $> bash execute-playbook.sh playbooks/install-dev-architecture.yml
 ```
 
 
