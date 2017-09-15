@@ -15,11 +15,12 @@ trap 'err_undo' ERR
 if [ -n "$ROLE_NAME" ] && [ ! -d "$ROLE_NAME" ]; then
 	printf "Creating role structure for $ROLE_NAME...\n"
 	mkdir "$ROLE_NAME" && cd "$ROLE_NAME"
-	mkdir tasks handlers templates files vars meta
+	mkdir tasks handlers templates files vars meta defaults
 	echo "---" > handlers/main.yml
 	echo "---" > meta/main.yml
 	echo "---" > tasks/main.yml
 	echo "---" > vars/main.yml
+	echo "---" > defaults/main.yml
 	cd "$DIR_EXEC"
 else
 	printf "ERR: The role name exists or is empty\n"
