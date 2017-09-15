@@ -1,0 +1,16 @@
+---
+- hosts: masters
+  become: yes
+  tasks:
+    - debug:
+        msg: " System {{ inventory_hostname }} has ip {{ hostvars[inventory_hostname].ansible_host }}"
+- hosts: agents
+  become: yes
+  tasks:
+    - debug:
+        msg: " System {{ inventory_hostname }} has ip {{ hostvars[inventory_hostname].ansible_host }}"
+- hosts: all
+  become: yes
+  tasks:
+    - debug:
+        msg: " System {{ inventory_hostname }} has ip {{ hostvars[inventory_hostname].ansible_host }}"
