@@ -1,0 +1,33 @@
+master-1 ansible_connection=ssh ansible_host=192.168.33.10 ansible_user=vagrant ansible_ssh_private_key_file=/etc/ansible/machines/master-1/virtualbox/private_key
+agent-1 ansible_connection=ssh ansible_host=192.168.33.11 ansible_user=vagrant ansible_ssh_private_key_file=/etc/ansible/machines/agent-1/virtualbox/private_key
+agent-2 ansible_connection=ssh ansible_host=192.168.33.12 ansible_user=vagrant ansible_ssh_private_key_file=/etc/ansible/machines/agent-2/virtualbox/private_key
+
+[masters]
+master-1
+
+[agents]
+agent-1
+agent-2
+
+[all:children]
+masters
+agents
+
+[all:vars]
+consul_datacenter="test"
+consul_bootstrap="true"
+consul_use_systemd="true"
+consul_use_upstart="false"
+consul_use_initd="false"
+consul_bind_address="{{ hostvars[inventory_hostname].ansible_host }}"
+consul_join_at_start=true
+consul_retry_join=true
+consul_retry_interval=5s
+consul_retry_max=50
+consul_servers=["{{ hostvars['master-1'].ansible_host }}"]
+
+
+[masters:vars]
+consul_is_server="true"
+
+[agents:vars]
