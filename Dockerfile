@@ -5,7 +5,9 @@ RUN yum install -y ansible \
 	wget \
 	net-tools \
 	vim \
-	openssh-clients
+	openssh-clients \
+	bind \
+	bind-utils \
 
 	
 CMD ["/bin/bash"]
